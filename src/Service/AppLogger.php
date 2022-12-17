@@ -30,3 +30,4 @@ class AppLogger
         $this->logger->error($message);
     }
 }
+
