@@ -17,7 +17,7 @@ class DemoTest extends TestCase
         $req = new HttpRequest();
         $svc = New Demo($logger, $req);
 
-        $v = $svc->foo($this->products);
+        $v = $svc->foo();
         $this->assertEquals("bar",$v);
     }
 
@@ -32,8 +32,8 @@ class DemoTest extends TestCase
             )
         );
         $stub->method('get_user_info')
-            ->will($this->returnValueMap($mock_result));
+            ->will($this->returnValue($mock_result));
         $result = $stub->get_user_info();
-        $this->assertEquals(0, $result["error"]);
+        $this->assertSame($result, $mock_result);
     }
 }
